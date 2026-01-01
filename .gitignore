@@ -163,4 +163,8 @@ cython_debug/
 #.idea/
 # Project specific
 data/midi/
-outputs/
+# outputs/ # Removed broad ignore to allow specific inclusions below
+outputs/generated/
+# Allow model files
+!outputs/models/best_model.pt
+!outputs/models/vocabulary.json
