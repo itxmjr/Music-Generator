@@ -72,7 +72,7 @@ export const MidiPlayer = ({ midiData, selectedMood, onDownload }: MidiPlayerPro
     const loadMidi = async () => {
       try {
         const midi = new Midi(midiData);
-        console.log("🎹 MIDI Loaded:", midi.name, "Duration:", midi.duration, "Tracks:", midi.tracks.length);
+        console.log("MIDI Loaded:", midi.name, "Duration:", midi.duration, "Tracks:", midi.tracks.length);
         setDuration(midi.duration);
 
         // Dispose previous part
@@ -94,7 +94,7 @@ export const MidiPlayer = ({ midiData, selectedMood, onDownload }: MidiPlayerPro
         });
 
         if (notes.length === 0) {
-          console.warn("⚠️ No notes found in MIDI data!");
+          console.warn("No notes found in MIDI data!");
         }
 
         // Create Tone.Part
@@ -110,9 +110,9 @@ export const MidiPlayer = ({ midiData, selectedMood, onDownload }: MidiPlayerPro
 
         partRef.current.loop = isLooping;
         partRef.current.loopEnd = midi.duration;
-        console.log("✅ Tone.Part created with", notes.length, "notes");
+        console.log("Tone.Part created with", notes.length, "notes");
       } catch (error) {
-        console.error("❌ Error loading MIDI:", error);
+        console.error("Error loading MIDI:", error);
       }
     };
 
@@ -161,9 +161,9 @@ export const MidiPlayer = ({ midiData, selectedMood, onDownload }: MidiPlayerPro
   const handlePlay = useCallback(async () => {
     if (!partRef.current) return;
 
-    console.log("▶️ Handling Play. Current state:", isPlaying);
+    console.log("Handling Play. Current state:", isPlaying);
     await Tone.start();
-    console.log("🔊 Audio Context started");
+    console.log("Audio Context started");
 
     if (isPlaying) {
       Tone.Transport.pause();
@@ -177,9 +177,9 @@ export const MidiPlayer = ({ midiData, selectedMood, onDownload }: MidiPlayerPro
         }
         Tone.Transport.start();
         setIsPlaying(true);
-        console.log("▶️ Playing from", Tone.Transport.seconds);
+        console.log("Playing from", Tone.Transport.seconds);
       } else {
-        console.error("❌ Cannot play: partRef.current is null");
+        console.error("Cannot play: partRef.current is null");
       }
     }
   }, [isPlaying]);

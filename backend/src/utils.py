@@ -38,7 +38,7 @@ def set_seed(seed: int = 42) -> None:
         torch.backends.cudnn.deterministic = True
         torch.backends.cudnn.benchmark = False
     
-    print(f"🎲 Random seed set to {seed}")
+    print(f"Random seed set to {seed}")
 
 
 def get_device() -> torch.device:
@@ -50,10 +50,10 @@ def get_device() -> torch.device:
     """
     if torch.cuda.is_available():
         device = torch.device("cuda")
-        print(f"🖥️  Using GPU: {torch.cuda.get_device_name(0)}")
+        print(f"Using GPU: {torch.cuda.get_device_name(0)}")
     else:
         device = torch.device("cpu")
-        print(f"🖥️  Using CPU")
+        print(f"Using CPU")
     
     return device
 
@@ -72,7 +72,7 @@ def save_config(config: Dict[str, Any], filepath: str) -> None:
     with open(filepath, 'w') as f:
         json.dump(config, f, indent=2)
     
-    print(f"💾 Config saved to {filepath}")
+    print(f"Config saved to {filepath}")
 
 
 def load_config(filepath: str) -> Dict[str, Any]:
@@ -159,9 +159,9 @@ if __name__ == "__main__":
     device = get_device()
     
     # Test timestamp
-    print(f"\n⏰ Timestamp: {get_timestamp()}")
+    print(f"Timestamp: {get_timestamp()}")
     
     # Test section printing
     print_section("TEST SECTION")
     
-    print("\n✅ All utilities working!")
+    print("All utilities working!")

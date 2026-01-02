@@ -39,7 +39,7 @@ class MidiDataLoader:
         
         # Find all MIDI files (including subdirectories)
         self.midi_files = self._find_midi_files()
-        print(f"📁 Found {len(self.midi_files)} MIDI files in {self.data_dir}")
+        print(f"Found {len(self.midi_files)} MIDI files in {self.data_dir}")
     
     def _find_midi_files(self) -> List[Path]:
         """
@@ -97,7 +97,7 @@ class MidiDataLoader:
             
         except Exception as e:
             # Log the error but don't crash
-            print(f"⚠️  Failed to parse {file_path.name}: {e}")
+            print(f"Failed to parse {file_path.name}: {e}")
             return None
     
     def load_all_notes(self, max_files: Optional[int] = None) -> List[str]:
@@ -116,7 +116,7 @@ class MidiDataLoader:
         files_to_process = self.midi_files[:max_files] if max_files else self.midi_files
         
         # tqdm gives us a progress bar
-        print(f"🎵 Processing {len(files_to_process)} MIDI files...")
+        print(f"Processing {len(files_to_process)} MIDI files...")
         
         successful = 0
         failed = 0
@@ -131,9 +131,9 @@ class MidiDataLoader:
                 failed += 1
         
         # Summary statistics
-        print(f"\n✅ Successfully processed: {successful} files")
-        print(f"❌ Failed to process: {failed} files")
-        print(f"🎹 Total notes/chords extracted: {len(all_notes)}")
+        print(f"\nSuccessfully processed: {successful} files")
+        print(f"Failed to process: {failed} files")
+        print(f"Total notes/chords extracted: {len(all_notes)}")
         
         return all_notes
     

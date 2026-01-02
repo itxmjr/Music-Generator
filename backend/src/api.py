@@ -34,14 +34,14 @@ app.add_middleware(
 
 # Check if model exists
 if not Path(MODEL_PATH).exists() or not Path(VOCAB_PATH).exists():
-    logger.error("❌ Model files not found! Please run 'python main.py train' first.")
+    logger.error("Model files not found! Please run 'python main.py train' first.")
 
 # Initialize the generator globally to load model once
 try:
     generator = MusicGenerator(MODEL_PATH, VOCAB_PATH)
-    logger.info("✅ Model loaded successfully")
+    logger.info("Model loaded successfully")
 except Exception as e:
-    logger.error(f"❌ Failed to load model: {e}")
+    logger.error(f"Failed to load model: {e}")
     generator = None
 
 # Ensure output directory exists
@@ -53,7 +53,7 @@ OUTPUT_DIR.mkdir(parents=True, exist_ok=True)
 async def read_root():
     """API Root - Welcome message."""
     return {
-        "message": "🎵 AI Music Generator API is running",
+        "message": "AI Music Generator API is running",
         "docs": "/docs",
         "health": "/health",
         "generate": "/generate"

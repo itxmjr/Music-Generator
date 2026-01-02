@@ -57,7 +57,7 @@ def train() -> None:
     notes = loader.load_all_notes(max_files=CONFIG["max_files"])
     
     if len(notes) < CONFIG["sequence_length"] + 1:
-        print(f"❌ Not enough notes ({len(notes)})")
+        print(f"Not enough notes ({len(notes)})")
         sys.exit(1)
     
     # Step 2: Preprocess
@@ -96,9 +96,9 @@ def train() -> None:
         early_stopping_patience=CONFIG["patience"]
     )
     
-    print_section("✅ Training Complete!")
-    print(f"   Model saved to: {CONFIG['model_dir']}/best_model.pt")
-    print(f"\n   Next step: python main.py generate")
+    print_section("Training Complete!")
+    print(f"Model saved to: {CONFIG['model_dir']}/best_model.pt")
+    print(f"\nNext step: python main.py generate")
 
 
 def generate() -> None:
@@ -109,8 +109,8 @@ def generate() -> None:
     
     # Check if model exists
     if not model_path.exists():
-        print("❌ No trained model found!")
-        print("   Run training first: python main.py train")
+        print("No trained model found!")
+        print("Run training first: python main.py train")
         sys.exit(1)
     
     # Create output directory
@@ -137,11 +137,11 @@ def generate() -> None:
                 bpm=CONFIG["bpm"]
             )
     
-    print_section("✅ Generation Complete!")
-    print(f"   Files saved to: {CONFIG['generated_dir']}/")
-    print(f"\n   To play MIDI files:")
-    print(f"   - Use VLC or any MIDI player")
-    print(f"   - Or upload to: https://signal.vercel.app/")
+    print_section("Generation Complete!")
+    print(f"Files saved to: {CONFIG['generated_dir']}/")
+    print(f"\nTo play MIDI files:")
+    print(f"- Use VLC or any MIDI player")
+    print(f"- Or upload to: https://signal.vercel.app/")
 
 
 def show_help() -> None:
@@ -191,7 +191,7 @@ def main():
     elif command == "generate":
         generate()
     else:
-        print(f"❌ Unknown command: {command}")
+        print(f"Unknown command: {command}")
         show_help()
 
 

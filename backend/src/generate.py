@@ -117,9 +117,9 @@ class MusicGenerator:
         model.load_state_dict(checkpoint['model_state_dict'])
         model = model.to(self.device)
         
-        print(f"📂 Model loaded from {model_path}")
-        print(f"   Trained for {checkpoint['epoch'] + 1} epochs")
-        print(f"   Validation loss: {checkpoint['val_loss']:.4f}")
+        print(f"Model loaded from {model_path}")
+        print(f"Trained for {checkpoint['epoch'] + 1} epochs")
+        print(f"Validation loss: {checkpoint['val_loss']:.4f}")
         
         return model
     
@@ -208,7 +208,7 @@ class MusicGenerator:
         # Convert indices back to notes
         generated_notes = self.preprocessor.integers_to_notes(generated_indices)
         
-        print(f"✅ Generated {len(generated_notes)} notes!")
+        print(f"Generated {len(generated_notes)} notes!")
         
         return generated_notes
     
@@ -268,7 +268,7 @@ class MusicGenerator:
         3. Set instrument and tempo
         4. Export to MIDI file
         """
-        print(f"\n🎹 Converting to MIDI...")
+        print(f"\nConverting to MIDI...")
         
         # Create output directory if needed
         output_path = Path(output_path)
@@ -318,9 +318,9 @@ class MusicGenerator:
         # Write to MIDI file
         midi_stream.write('midi', fp=str(output_path))
         
-        print(f"💾 MIDI saved to: {output_path}")
-        print(f"   Duration: ~{len(notes) * note_duration / 2:.1f} seconds")
-        print(f"   Tempo: {bpm} BPM")
+        print(f"MIDI saved to: {output_path}")
+        print(f"Duration: ~{len(notes) * note_duration / 2:.1f} seconds")
+        print(f"Tempo: {bpm} BPM")
     
     def generate_and_save(
         self,
@@ -392,7 +392,7 @@ def generate_samples(
             )
     
     print("\n" + "="*60)
-    print(f"✅ All samples saved to {output_dir}/")
+    print(f"All samples saved to {output_dir}/")
     print("="*60)
 
 
@@ -405,13 +405,13 @@ if __name__ == "__main__":
     vocab_path = Path("outputs/models/vocabulary.json")
     
     if not model_path.exists():
-        print("❌ No trained model found!")
-        print("   Please run training first: python main.py")
+        print("No trained model found!")
+        print("Please run training first: python main.py")
         sys.exit(1)
     
     if not vocab_path.exists():
-        print("❌ No vocabulary file found!")
-        print("   Please run training first: python main.py")
+        print("No vocabulary file found!")
+        print("Please run training first: python main.py")
         sys.exit(1)
     
     # Generate samples

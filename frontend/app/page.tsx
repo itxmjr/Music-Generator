@@ -65,7 +65,7 @@ export default function Home() {
       }
 
       const data = await response.arrayBuffer();
-      console.log("📦 Received MIDI data. Size:", data.byteLength, "bytes");
+      console.log("Received MIDI data. Size:", data.byteLength, "bytes");
       setMidiData(data);
       setUiState("playing");
       setStatus({ type: "success", message: "Your track is ready to play!" });
@@ -73,7 +73,7 @@ export default function Home() {
         duration: 4000,
       });
     } catch (error) {
-      console.error("❌ API Error:", error);
+      console.error("API Error:", error);
       const message = error instanceof Error ? error.message : "Generation failed";
       setUiState("error");
       setStatus({ type: "error", message });

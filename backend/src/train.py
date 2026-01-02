@@ -245,12 +245,12 @@ class MusicTrainer:
             Training history dictionary
         """
         print(f"\n{'='*60}")
-        print(f"🚀 Starting Training")
+        print(f"Starting Training")
         print(f"{'='*60}")
-        print(f"   Epochs: {epochs}")
-        print(f"   Device: {self.device}")
-        print(f"   Training batches: {len(train_loader)}")
-        print(f"   Validation batches: {len(val_loader)}")
+        print(f"Epochs: {epochs}")
+        print(f"Device: {self.device}")
+        print(f"Training batches: {len(train_loader)}")
+        print(f"Validation batches: {len(val_loader)}")
         print(f"{'='*60}\n")
         
         early_stopping = EarlyStopping(patience=early_stopping_patience)
@@ -284,11 +284,11 @@ class MusicTrainer:
             if val_loss < best_val_loss:
                 best_val_loss = val_loss
                 self.save_checkpoint('best_model.pt', epoch, val_loss)
-                print(f"         └── 💾 New best model saved!")
+                print(f"         └── New best model saved!")
             
             # Early stopping check
             if early_stopping(val_loss):
-                print(f"\n⚠️  Early stopping triggered after {epoch+1} epochs")
+                print(f"\nEarly stopping triggered after {epoch+1} epochs")
                 break
         
         # Save final model
@@ -301,9 +301,9 @@ class MusicTrainer:
         self.plot_history()
         
         print(f"\n{'='*60}")
-        print(f"✅ Training Complete!")
-        print(f"   Best Validation Loss: {best_val_loss:.4f}")
-        print(f"   Model saved to: {self.checkpoint_dir}")
+        print(f"Training Complete!")
+        print(f"Best Validation Loss: {best_val_loss:.4f}")
+        print(f"Model saved to: {self.checkpoint_dir}")
         print(f"{'='*60}")
         
         return self.history
@@ -372,7 +372,7 @@ class MusicTrainer:
         plt.savefig(plot_path, dpi=150, bbox_inches='tight')
         plt.close()
         
-        print(f"📊 Training curves saved to {plot_path}")
+        print(f"Training curves saved to {plot_path}")
 
 
 def prepare_data_loaders(
@@ -424,12 +424,12 @@ def prepare_data_loaders(
         pin_memory=True
     )
     
-    print(f"📦 Data Loaders Created:")
-    print(f"   Training samples: {train_size}")
-    print(f"   Validation samples: {val_size}")
-    print(f"   Batch size: {batch_size}")
-    print(f"   Training batches: {len(train_loader)}")
-    print(f"   Validation batches: {len(val_loader)}")
+    print(f"Data Loaders Created:")
+    print(f"Training samples: {train_size}")
+    print(f"Validation samples: {val_size}")
+    print(f"Batch size: {batch_size}")
+    print(f"Training batches: {len(train_loader)}")
+    print(f"Validation batches: {len(val_loader)}")
     
     return train_loader, val_loader
 
@@ -459,7 +459,7 @@ if __name__ == "__main__":
     trainer = MusicTrainer(model, device)
     
     # Train for a few epochs to test
-    print("\n🧪 Running quick training test (3 epochs)...\n")
+    print("\nRunning quick training test (3 epochs)...\n")
     history = trainer.train(train_loader, val_loader, epochs=3)
     
-    print("\n✅ Training module test complete!")
+    print("\nTraining module test complete!")

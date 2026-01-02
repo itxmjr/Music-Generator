@@ -228,7 +228,7 @@ def create_model(
     
     # Print summary
     print(model.summary())
-    print(f"🖥️  Using device: {device}")
+    print(f"Using device: {device}")
     
     return model, device
 
@@ -247,11 +247,11 @@ if __name__ == "__main__":
     # Forward pass
     output, hidden = model(sample_input)
     
-    print(f"\n📊 Test Results:")
-    print(f"   Input shape:  {sample_input.shape}")
-    print(f"   Output shape: {output.shape}")
-    print(f"   Hidden state shape: h={hidden[0].shape}, c={hidden[1].shape}")
+    print("\nTest Results:")
+    print(f"Input shape:  {sample_input.shape}")
+    print(f"Output shape: {output.shape}")
+    print(f"Hidden state shape: h={hidden[0].shape}, c={hidden[1].shape}")
     
     # Verify output shape
     assert output.shape == (4, vocab_size), "Output shape mismatch!"
-    print(f"\n✅ All tests passed!")
+    print(f"\nAll tests passed!")

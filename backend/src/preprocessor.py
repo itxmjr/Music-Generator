@@ -68,11 +68,11 @@ class MusicPreprocessor:
         total_unique = len(note_counts)
         filtered_out = total_unique - self.vocab_size
         
-        print(f"📊 Vocabulary Statistics:")
-        print(f"   Total unique notes/chords: {total_unique}")
-        print(f"   Filtered out (count < {min_count}): {filtered_out}")
-        print(f"   Final vocabulary size: {self.vocab_size}")
-        print(f"   Sample mappings: {dict(list(self.note_to_int.items())[:5])}")
+        print("Vocabulary Statistics:")
+        print(f"Total unique notes/chords: {total_unique}")
+        print(f"Filtered out (count < {min_count}): {filtered_out}")
+        print(f"Final vocabulary size: {self.vocab_size}")
+        print(f"Sample mappings: {dict(list(self.note_to_int.items())[:5])}")
     
     def notes_to_integers(self, notes: List[str]) -> List[int]:
         """
@@ -97,7 +97,7 @@ class MusicPreprocessor:
                 unknown_notes.add(note)
         
         if unknown_notes:
-            print(f"⚠️  Skipped {len(unknown_notes)} unknown notes")
+            print(f"Skipped {len(unknown_notes)} unknown notes")
         
         return integers
     
@@ -190,7 +190,7 @@ class MusicPreprocessor:
         with open(filepath, 'w') as f:
             json.dump(vocab_data, f, indent=2)
         
-        print(f"💾 Vocabulary saved to {filepath}")
+        print(f"Vocabulary saved to {filepath}")
     
     def load_vocabulary(self, filepath: str) -> None:
         """
@@ -208,7 +208,7 @@ class MusicPreprocessor:
         self.vocab_size = vocab_data["vocab_size"]
         self._vocab_built = True
         
-        print(f"📂 Vocabulary loaded: {self.vocab_size} notes")
+        print(f"Vocabulary loaded: {self.vocab_size} notes")
 
 
 # Quick test when run directly
